@@ -58,3 +58,31 @@
 
 **任务（tasks）**
 一个任务就是由执行诸如从头执行一段程序、执行一个事件回调或一个 interval/timeout 被触发之类的标准机制而被调度的任意 JavaScript 代码。这些都在任务队列（task queue）上被调度
+<br>
+
+#### Promise
+Promise 是一种对异步操作的封装，里面包含未来才会结束的某个事件（异步操作）的结果 可以将异步操作以同步操作的流程表达出来，还是使用的回调方式(then的形参其实就是callback)
+
+**promise的三种状态**
+
+- pending-进行中
+- fulfilled-已成功
+- rejected-已失败
+
+> 一旦状态改变就不会再变
+
+**promise 用法**
+```js
+const promise = new Promise((resolve,reject)=>{
+  resolve(1)
+  reject("reject")
+})
+const result = promise.then((result)=>{
+  result = result+1
+  console.log(result)
+}).catch((error)=>{
+  console.log("Promise catch invoke error = "+error)
+}).finally(()=>{
+  console.log("Promise finally invoke")
+})
+```
