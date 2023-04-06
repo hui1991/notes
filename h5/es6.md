@@ -86,3 +86,144 @@ const result = promise.then((result)=>{
   console.log("Promise finally invoke")
 })
 ```
+<br>
+
+#### 闭包
+
+闭包就是能够读取其他函数内部变量的函数
+
+是指有权访问另一个函数作用域中的变量的函数
+
+```js
+function f1(){
+　　var n=999;
+　　function f2(){
+　　　　alert(n);
+　　}
+　　return f2;
+}
+var result=f1();
+result(); // 999
+```
+
+- 读取函数内部的变量
+- 让这些变量的值始终保持在内存中
+- 闭包会引起内存泄露
+<br>
+
+#### 原型和原型链
+- 原型对象是用来存放特定类型的所有实例共享的属性和方法
+- 每个函数都会有prototype属性（指针）指向原型对象
+- 默认情况下原型对象会有一个constructor属性 指向该类型的构造函数
+- 我们可以给原型对象添加其他的属性和方法
+- 实例对象通过_proto_指向构造函数的原型对象  而不是指向构造函数
+- 替换子类的原型，将子类的原型指向父类的实例
+
+
+![](images/2023-04-06-17-55-09.png)
+
+<br>
+
+#### var const let 区别
+
+- 变量提升 var存在变量提升 const和let不存在变量提升
+  ```js
+  // var 的情况
+  console.log(foo); // 输出undefined
+  var foo = 2;
+
+  // let 的情况
+  console.log(bar); // 报错ReferenceError
+  let bar = 2;
+  ```  
+
+- 暂时性死区 const和let存在暂时性死区 (temporal dead zone)
+  ```js
+  var tmp = 123;
+
+  if (true) {
+    tmp = 'abc'; // ReferenceError
+    let tmp;
+  }
+  ```  
+- 重复声明  const和let不允许重复性声明，var可以重复声明
+  ```js
+  // 报错
+  function func() {
+    let a = 10;
+    var a = 1;
+  }
+
+  // 报错
+  function func() {
+    let a = 10;
+    let a = 1;
+  }  
+  ```
+
+- let为javaScript新增了块级作用域   ES5只有全局作用域和函数作用域
+
+  ```js
+  {
+    let a = 10;
+    var b = 1;
+  }
+
+  a // ReferenceError: a is not defined.
+  b // 1
+  ```
+
+  ```js
+  var a = [];
+  for (var i = 0; i < 10; i++) {
+    a[i] = function () {
+      console.log(i);
+    };
+  }
+  a[6](); // 10
+  ```
+  ```js
+  var a = [];
+  for (let i = 0; i < 10; i++) {
+    a[i] = function () {
+      console.log(i);
+    };
+  }
+  a[6](); // 6
+  ```
+<br>
+
+#### 箭头函数
+
+- 箭头函数的this对象是固定的
+  对于普通函数来说，内部的this指向函数运行时所在的对象，但是这一点对箭头函数不成立。它没有自己的this对象，内部的this就是定义时上层作用域中的this。也就是说，箭头函数内部的this指向是固定的，相比之下，普通函数的this指向是可变的
+
+  下面是ES6转成ES5的代码，箭头函数的this绑定在定义上层的作用域上
+  ```js
+  // ES6
+  function foo() {
+    setTimeout(() => {
+      console.log('id:', this.id);
+    }, 100);
+  }
+
+  // ES5
+  function foo() {
+    var _this = this;
+
+    setTimeout(function () {
+      console.log('id:', _this.id);
+    }, 100);
+  }
+  ```  
+
+- 不可以当作构造函数，也就是说，不可以对箭头函数使用new命令，否则会抛出一个错误，也是因为this指向的问题
+
+- 不可以使用yield命令，因此箭头函数不能用作 Generator 函数
+<br>
+
+#### 作用域
+变量（基本数据类型和引用数据类型）的执行环境，可以分为全局作用域和函数作用域
+
+作用域是在运行时代码中的某些特定部分中变量，函数和对象的可访问性。换句话说，作用域决定了代码区块中变量和其他资源的可见性
+
