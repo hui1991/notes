@@ -227,3 +227,38 @@ result(); // 999
 
 作用域是在运行时代码中的某些特定部分中变量，函数和对象的可访问性。换句话说，作用域决定了代码区块中变量和其他资源的可见性
 
+<br>
+
+#### 跨域
+
+**跨域资源共享 CORS**
+
+CORS是一个W3C标准，全称是"跨域资源共享"（Cross-origin resource sharing）
+
+CORS需要浏览器和服务器同时支持。目前，所有浏览器都支持该功能，IE浏览器不能低于IE10。
+
+整个CORS通信过程，都是浏览器自动完成，不需要用户参与。对于开发者来说，CORS通信与同源的AJAX通信没有差别，代码完全一样。浏览器一旦发现AJAX请求跨源，就会自动添加一些附加的头信息，有时还会多出一次附加的请求，但用户不会有感觉。
+
+因此，实现CORS通信的关键是服务器。只要服务器实现了CORS接口，就可以跨源通信
+
+- 简单请求
+  对于简单请求，浏览器直接发出CORS请求。具体来说，就是在头信息之中，增加一个Origin字段
+  ```
+  GET /cors HTTP/1.1
+  Origin: http://api.bob.com
+  Host: api.alice.com
+  Accept-Language: en-US
+  Connection: keep-alive
+  User-Agent: Mozilla/5.0...
+  ```
+
+<br>
+
+- 非简单请求
+  非简单请求是那种对服务器有特殊要求的请求，比如请求方法是PUT或DELETE，或者Content-Type字段的类型是application/json。
+  
+  非简单请求的CORS请求，会在正式通信之前，增加一次HTTP查询请求，称为"预检"请求（preflight）
+<br>
+
+**nginx代理** 
+ 
