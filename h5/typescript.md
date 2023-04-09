@@ -34,3 +34,28 @@ TypeScript配置文件
 
 - 类型别名可以用在基本类型、联合类型或元组类型，而接口不行
 - 同名接口会自动合并，而类型别名不会
+
+<br>
+
+**元组**
+个数和类型确定的数组，不同类型
+```js
+let tom: [string, number] = ['Tom', 25];
+```
+
+<br>
+
+**联合类型**
+联合类型（Union Types）表示取值可以为多种类型中的一种
+
+```js
+let myFavoriteNumber: string | number;
+myFavoriteNumber = 'seven';
+myFavoriteNumber = 7;
+```
+
+<br>
+
+
+**参考**
+[TypeScript入门教程](http://ts.xcatliu.com/)

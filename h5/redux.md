@@ -55,5 +55,63 @@ UI组件
 - 带有内部状态
 - 使用 Redux 的 API
 
+**hook**
+
+- useSelector
+  从 redux 提取 state
+  ```js
+  import React from 'react'
+  import { useSelector } from 'react-redux'
+
+  export const CounterComponent = () => {
+    const counter = useSelector((state) => state.counter)
+    return <div>{counter}</div>
+  }
+  ```
+
+- useDispatch
+  这个 hook 返回一个对 Redux store 中的 dispatch 函数的引用。你可以按需使用它来 dispatch action
+  ```js
+  import React from 'react'
+  import { useDispatch } from 'react-redux'
+
+  export const CounterComponent = ({ value }) => {
+    const dispatch = useDispatch()
+
+    return (
+      <div>
+        <span>{value}</span>
+        <button onClick={() => dispatch({ type: 'increment-counter' })}>
+          Increment counter
+        </button>
+      </div>
+    )
+  }
+  ```
+
+- useStore
+  这个 hook 返回一个 Redux store 引用，该 store 与传递给 Provider 组件的 store 相同。
+
+  ```js
+  import React from 'react'
+  import { useStore } from 'react-redux'
+
+  export const CounterComponent = ({ value }) => {
+    const store = useStore()
+
+    // 仅仅是示例！不要在实际的应用中这么做。
+    // 当 store state 变更时，组件不会自动更新
+    return <div>{store.getState()}</div>
+  }
+  ```
+
+<br>
+
+**参考**
+
+[redux中间件与异步操作](http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_two_async_operations.html)
+      
+
+
 
 
