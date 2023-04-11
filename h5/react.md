@@ -89,3 +89,23 @@ virtual DOM是用javaScript对象对DOM的抽象（ 原生dom在内存中的js�
 **hook规则**
 - 只在最顶层使用hook
 - 只在React函数中调用hook(函数组件和自定义hook)
+
+<br>
+
+#### Fiber
+
+
+**时间切片**
+基本思路是把 JS 运算 切割成多个任务，分批完成各个任务。在完成一部分任务后，把执行的控制权交还给浏览器，让其有时间进行渲染工作。渲染完成后，再进行未完成的计算任务
+
+这种将长任务分拆到每一帧中，像蚂蚁搬家一样一次执行一小段任务的操作，被称为时间切片 (time slice)
+
+
+
+
+
+<br>
+
+**参考**
+
+[React 之技术详解 (一) - Fiber 理念篇](https://www.lumin.tech/blog/react-1-concept/)

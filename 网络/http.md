@@ -100,6 +100,10 @@ HTTP2.0的一个强大的新功能，就是服务器可以对一个客户端请�
 ![](images/2023-04-09-23-18-47.png)
 
 
+#### 缓存
+- 强缓存
+- 协商缓存
+  ETAG
 
 <br>
 
@@ -108,3 +112,5 @@ HTTP2.0的一个强大的新功能，就是服务器可以对一个客户端请�
 [Introduction to HTTP/2](https://web.dev/performance-http2/#_8)
 [深入理解http2.0协议，看这篇就够了](https://juejin.cn/post/6844903984524705800)
 [什么是HTTP/2](https://info.support.huawei.com/info-finder/encyclopedia/zh/HTTP--2.html)
+[浏览器缓存知识梳理
+](https://juejin.cn/post/6947936223126093861)
