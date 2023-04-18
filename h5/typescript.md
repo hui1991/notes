@@ -57,5 +57,45 @@ myFavoriteNumber = 7;
 <br>
 
 
+**泛型**
+
+泛型（Generics）是指在定义函数、接口或类的时候，不预先指定具体的类型，而在使用的时候再指定类型的一种特性
+
+泛型约束
+可以对泛型进行约束，只允许这个函数传入那些包含 length 属性的变量。这就是泛型约束
+
+```js
+interface Lengthwise {
+    length: number;
+}
+
+function loggingIdentity<T extends Lengthwise>(arg: T): T {
+    console.log(arg.length);
+    return arg;
+}
+```
+
+<br>
+
+**用接口定义函数的形状**
+我们也可以使用接口的方式来定义一个函数需要符合的形状：
+
+```js
+interface SearchFunc {
+    (source: string, subString: string): boolean;
+}
+
+let mySearch: SearchFunc;
+mySearch = function(source: string, subString: string) {
+    return source.search(subString) !== -1;
+}
+```
+采用函数表达式|接口定义函数的方式时，对等号左侧进行类型限制，可以保证以后对函数名赋值时保证参数个数、参数类型、返回值类型不变。
+
+
+
+
+<br>
+
 **参考**
 [TypeScript入门教程](http://ts.xcatliu.com/)
