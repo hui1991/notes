@@ -120,6 +120,36 @@ HTML（超文本标记语言）中元素大多数都是“块级”元素或行�
 
 ![](images/2023-04-09-22-45-38.png)
 
+<br>
+
+
+
+
+#### 设置滚动条样式
+
+```css
+:global {
+  ::-webkit-scrollbar {
+    display: block;
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 50px;
+    -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+  }
+  ::-webkit-scrollbar-track {
+    background: #f3f3f3;
+    border-radius: 30px;
+    -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+  }
+}
+```
+
+
+
+
 
 
 <br>
